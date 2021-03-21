@@ -39,3 +39,28 @@ history = model.fit(train_data, train_labels_one_hot, batch_size=256, epochs=20,
 
 [test_loss, test_acc] = model.evaluate(test_data, test_labels_one_hot)
 print("Evaluation result on Test Data : Loss = {}, accuracy = {}".format(test_loss, test_acc))
+
+## Plot Accuracy
+loss_train = history.history['accuracy']
+loss_val = history.history['val_accuracy']
+epochs = range(1,21)
+plt.plot(epochs, loss_train, 'g', label='Training accuracy')
+plt.plot(epochs, loss_val, 'b', label='validation accuracy')
+plt.title('Training and Validation accuracy')
+plt.xlabel('Epochs')
+plt.ylabel('Accuracy')
+plt.legend()
+plt.show()
+
+#plot loss
+loss_train = history.history['loss']
+loss_val = history.history['val_loss']
+epochs = range(1,21)
+plt.plot(epochs, loss_train, 'g', label='Training loss')
+plt.plot(epochs, loss_val, 'b', label='validation loss')
+plt.title('Training and Validation loss')
+plt.xlabel('Epochs')
+plt.ylabel('Loss')
+plt.legend()
+plt.show()
+
