@@ -7,9 +7,9 @@ from keras.utils import to_categorical
 
 (train_images,train_labels),(test_images, test_labels) = mnist.load_data()
 #display the first image in the training data
-plt.imshow(train_images[0,:,:],cmap='gray')
-plt.title('Ground Truth : {}'.format(train_labels[0]))
-plt.show()
+#plt.imshow(train_images[0,:,:],cmap='gray')
+#plt.title('Ground Truth : {}'.format(train_labels[0]))
+#plt.show()
 
 #process the data
 #1. convert each image of shape 28*28 to 784 dimensional which will be fed to the network as a single feature
@@ -40,27 +40,9 @@ history = model.fit(train_data, train_labels_one_hot, batch_size=256, epochs=20,
 [test_loss, test_acc] = model.evaluate(test_data, test_labels_one_hot)
 print("Evaluation result on Test Data : Loss = {}, accuracy = {}".format(test_loss, test_acc))
 
-## Plot Accuracy
-loss_train = history.history['accuracy']
-loss_val = history.history['val_accuracy']
-epochs = range(1,21)
-plt.plot(epochs, loss_train, 'g', label='Training accuracy')
-plt.plot(epochs, loss_val, 'b', label='validation accuracy')
-plt.title('Training and Validation accuracy')
-plt.xlabel('Epochs')
-plt.ylabel('Accuracy')
-plt.legend()
-plt.show()
+predicted = np.argmax(model.predict(test_data[0].reshape(1,784)), axis=-1)
+#model.predict_classes(test_data[0].reshape(1,784))
+plt.imshow(test_data[0].reshape(28,28))
+plt.title(predicted)
 
-#plot loss
-loss_train = history.history['loss']
-loss_val = history.history['val_loss']
-epochs = range(1,21)
-plt.plot(epochs, loss_train, 'g', label='Training loss')
-plt.plot(epochs, loss_val, 'b', label='validation loss')
-plt.title('Training and Validation loss')
-plt.xlabel('Epochs')
-plt.ylabel('Loss')
-plt.legend()
 plt.show()
-
