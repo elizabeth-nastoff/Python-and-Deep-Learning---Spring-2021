@@ -11,10 +11,6 @@ from keras.layers.convolutional import Conv2D
 from keras.layers.convolutional import MaxPooling2D
 from keras.utils import np_utils
 
-# I couldn't get any variation of this code to work
-#from keras import backend as K
-#K.set_image_data_format('channels_first')
-
 from matplotlib import pyplot as plt
 
 

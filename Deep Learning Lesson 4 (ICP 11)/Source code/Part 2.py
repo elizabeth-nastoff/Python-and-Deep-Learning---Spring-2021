@@ -11,13 +11,9 @@ from keras.layers.convolutional import Conv2D
 from keras.layers.convolutional import MaxPooling2D
 from keras.utils import np_utils
 
-#from keras import backend as K
-#K.set_image_data_format('channels_first')
 
 from matplotlib import pyplot
 from keras.preprocessing.image import img_to_array
-
-
 
 # fix random seed for reproducibility
 seed = 7
